@@ -46,4 +46,21 @@ class FormAction extends Action{
 			$this->error($Form->getError());
 		}
 	}
+	
+	public function delete($id=0){
+		$Form = M('Form');
+		$this->vo  =  $Form->find($id);
+		$this->display();
+	}
+	
+	public function deleteById($id=0){
+		$Form = M('Form');
+		
+		$result =   $Form->delete($id);
+		if($result) {
+			$this->success('删除成功！');
+		}else{
+			$this->error('删除失败！');
+		}
+	}
 }
